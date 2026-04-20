@@ -1,0 +1,55 @@
+/* Custom Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 10px;
+}
+
+/* Background Blob Animations (Optional but adds "life") */
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(10px, 15px); }
+    100% { transform: translate(0, 0); }
+}
+
+.background-blobs div {
+    animation: float 10s infinite ease-in-out;
+}
+
+/* Image Hover Scale */
+.group:hover img {
+    transform: scale(1.05);
+}
+
+/* Modal Entry */
+#modal-backdrop.flex {
+    opacity: 1;
+}
+
+#modal-backdrop.flex #modal-container {
+    transform: scale(1);
+}
