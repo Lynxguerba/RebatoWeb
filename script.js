@@ -51,11 +51,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
+    // --- Dynamic Age Calculation ---
+    function calculateAge(birthDate) {
+        const today = new Date();
+        const birth = new Date(birthDate);
+        let age = today.getFullYear() - birth.getFullYear();
+        const monthDiff = today.getMonth() - birth.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+            age--;
+        }
+        return age;
+    }
+
+    const ageDisplay = document.getElementById('age-display');
+    if (ageDisplay) {
+        const age = calculateAge('December 17, 2003');
+        ageDisplay.textContent = `Age: ${age}`;
+    }
+
     // --- Dynamic Modal Logic ---
     const modalBackdrop = document.getElementById('modal-backdrop');
     const modalContent = document.getElementById('modal-content-body');
 
     const projectData = {
+        profileModal: {
+            type: 'profile',
+            title: "Ma. Allysa Krisebel Rebato",
+            image: "images/2f6d1c93-d9c4-4b87-a2b5-fbca4a70fe16.jpeg",
+            bio: "BSIT student at Davao del Norte State College with a strong passion for web development and cybersecurity."
+        },
         project1Modal: {
             title: "Tesda Clone Website",
             image: "images/projects/project1.png",
@@ -70,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "https://lynxguerba.github.io/Tesda-Final_Project/"
         },
         project2Modal: {
-            title: "Filipino Street Food App",
+            title: "Grillmaster: Filipino Street Food App",
             image: "images/projects/project2.png",
             desc: "A mobile application designed to showcase and facilitate the ordering of popular Filipino street foods.",
             features: [
@@ -98,6 +122,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="text-center">
                     <h3 class="text-xl font-bold mb-6">${data.title}</h3>
                     <img src="${data.src}" class="w-full rounded-2xl shadow-lg border border-gray-100 dark:border-white/5" alt="${data.title}">
+                </div>
+            `;
+        } else if (data.type === 'profile') {
+            content = `
+                <div class="text-center">
+                    <img src="${data.image}" class="w-48 h-48 rounded-full object-cover mx-auto mb-6 shadow-2xl border-4 border-white dark:border-white/10" alt="${data.title}">
+                    <h3 class="text-2xl font-bold mb-2">${data.title}</h3>
+                    <p class="text-blue-500 font-medium mb-4">Web Developer | BSIT Student</p>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg mx-auto">${data.bio}</p>
                 </div>
             `;
         } else {
