@@ -53,3 +53,13 @@ html {
 #modal-backdrop.flex #modal-container {
     transform: scale(1);
 }
+
+/* Hide Modal Scrollbar */
+#modal-content-body::-webkit-scrollbar {
+    display: none;
+}
+
+#modal-content-body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

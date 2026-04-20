@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateThemeIcon(theme) {
         if (theme === 'dark') {
-            themeIcon.className = 'fas fa-sun text-yellow-400';
+            themeIcon.className = 'fa-regular fa-sun';
         } else {
-            themeIcon.className = 'fas fa-moon text-gray-600';
+            themeIcon.className = 'fa-regular fa-moon';
         }
     }
 
@@ -66,7 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Interactive navigation",
                 "Semantic HTML structure"
             ],
-            stack: "HTML, CSS, Bootstrap, JavaScript"
+            stack: "HTML, CSS, Bootstrap, JavaScript",
+            link: "https://lynxguerba.github.io/Tesda-Final_Project/"
         },
         project2Modal: {
             title: "Filipino Street Food App",
@@ -110,17 +111,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${data.features.map(f => `<li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300"><i class="fas fa-check text-blue-500"></i> ${f}</li>`).join('')}
                     </ul>
                 </div>
-                <div>
+                <div class="mb-6">
                     <h4 class="font-bold mb-2 uppercase tracking-wider text-xs text-blue-500">Tech Stack</h4>
                     <p class="text-sm font-medium">${data.stack}</p>
                 </div>
+                ${data.link ? `
+                <div class="mt-8">
+                    <a href="${data.link}" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-2xl transition-all hover:scale-105 shadow-lg shadow-blue-500/20">
+                        <i class="fas fa-external-link-alt"></i> Visit Website
+                    </a>
+                </div>
+                ` : ''}
             `;
         }
 
         modalContent.innerHTML = content;
         modalBackdrop.classList.remove('hidden');
         modalBackdrop.classList.add('flex');
-        document.body.style.overflow = 'hidden';
         
         // Trigger animation
         setTimeout(() => {
@@ -133,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             modalBackdrop.classList.add('hidden');
             modalBackdrop.classList.remove('flex');
-            document.body.style.overflow = 'auto';
         }, 300);
     };
 

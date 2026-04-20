@@ -6,6 +6,8 @@
     <title>Ma. Allysa Krisebel Rebato | Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
     <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
@@ -40,13 +42,6 @@
 
     <main class="max-w-2xl mx-auto px-6 py-12 lg:py-20">
         
-        <!-- Theme Toggle -->
-        <div class="flex justify-end mb-8">
-            <button id="theme-toggle" class="p-2.5 rounded-full bg-white dark:bg-card border border-gray-200 dark:border-white/10 shadow-sm hover:scale-110 transition-transform">
-                <i id="theme-icon" class="fas fa-moon text-gray-600 dark:text-gray-400"></i>
-            </button>
-        </div>
-
         <!-- Profile Section -->
         <header class="mb-12 text-center md:text-left md:flex items-center gap-8 reveal">
             <div class="relative inline-block mb-6 md:mb-0">
@@ -57,7 +52,7 @@
             <div class="flex-1">
                 <h1 class="text-3xl font-bold tracking-tight mb-2">
                     Ma. Allysa Krisebel Rebato
-                    <i class="fas fa-certificate text-blue-500 text-xl ml-1 align-middle" title="Verified"></i>
+                   
                 </h1>
                 <p class="text-gray-600 dark:text-gray-400 font-medium mb-4">
                     BSIT Student at <span class="text-blue-500">Davao del Norte State College</span>
@@ -73,6 +68,12 @@
                     <a href="tel:+639631848217" class="text-gray-500 hover:text-green-500 transition-colors text-xl"><i class="fas fa-phone"></i></a>
                 </div>
             </div>
+            <!-- Theme Toggle -->
+        <div class="flex justify-end mb-8">
+            <button id="theme-toggle" class="p-2.5 rounded-full bg-white dark:bg-card border border-gray-200 dark:border-white/10 shadow-sm hover:scale-110 transition-transform">
+                <i id="theme-icon" class="fa-regular fa-moon"></i>
+            </button>
+        </div>
         </header>
 
         <!-- About Section -->
@@ -150,42 +151,70 @@
         <!-- Certificates Section -->
         <section class="mb-12 reveal">
             <h2 class="text-lg font-bold mb-4 uppercase tracking-widest text-gray-400">Certificates</h2>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="relative group cursor-pointer aspect-square rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5" onclick="openModal('cert1Modal')">
-                    <img src="images/certificates/cert_img1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Certificate">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fas fa-expand text-white text-2xl"></i>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Cert 1 -->
+                <div class="group cursor-pointer" onclick="openModal('cert1Modal')">
+                    <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 mb-3">
+                        <img src="images/certificates/cert_img1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Certificate">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="fas fa-expand text-white text-xl"></i>
+                        </div>
                     </div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-center text-gray-500 dark:text-gray-400">Achievement</p>
                 </div>
-                <div class="relative group cursor-pointer aspect-square rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5" onclick="openModal('cert2Modal')">
-                    <img src="images/certificates/cert_img2.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Certificate">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fas fa-expand text-white text-2xl"></i>
+                <!-- Cert 2 -->
+                <div class="group cursor-pointer" onclick="openModal('cert2Modal')">
+                    <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 mb-3">
+                        <img src="images/certificates/cert_img2.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Certificate">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="fas fa-expand text-white text-xl"></i>
+                        </div>
                     </div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-center text-gray-500 dark:text-gray-400">Completion</p>
                 </div>
-                <!-- ... other certificates grid ... -->
-            </div>
-            <div class="grid grid-cols-3 gap-3 mt-4">
-                <div class="bg-white dark:bg-card p-4 rounded-xl border border-gray-100 dark:border-white/5 text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" onclick="openModal('cert3Modal')">
-                    <i class="fas fa-shield-halved text-blue-500 mb-2 block text-xl"></i>
-                    <span class="text-[10px] font-bold uppercase">Ethical Hacker</span>
+                <!-- Cert 3 -->
+                <div class="group cursor-pointer" onclick="openModal('cert3Modal')">
+                    <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 mb-3">
+                        <img src="images/certificates/cert_ethical_hacker.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Certificate">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="fas fa-expand text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-center text-gray-500 dark:text-gray-400">Ethical Hacker</p>
                 </div>
-                <div class="bg-white dark:bg-card p-4 rounded-xl border border-gray-100 dark:border-white/5 text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" onclick="openModal('cert4Modal')">
-                    <i class="fas fa-network-wired text-green-500 mb-2 block text-xl"></i>
-                    <span class="text-[10px] font-bold uppercase">Packet Tracer</span>
+                <!-- Cert 4 -->
+                <div class="group cursor-pointer" onclick="openModal('cert4Modal')">
+                    <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 mb-3">
+                        <img src="images/certificates/cert_packet_tracer.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Certificate">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="fas fa-expand text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-center text-gray-500 dark:text-gray-400">Packet Tracer</p>
                 </div>
-                <div class="bg-white dark:bg-card p-4 rounded-xl border border-gray-100 dark:border-white/5 text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" onclick="openModal('cert5Modal')">
-                    <i class="fas fa-user-lock text-purple-500 mb-2 block text-xl"></i>
-                    <span class="text-[10px] font-bold uppercase">Cybersecurity</span>
+                <!-- Cert 5 -->
+                <div class="group cursor-pointer" onclick="openModal('cert5Modal')">
+                    <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 mb-3">
+                        <img src="images/certificates/cert_cybersecurity.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Certificate">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="fas fa-expand text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-center text-gray-500 dark:text-gray-400">Cybersecurity</p>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="text-center pt-8 border-t border-gray-100 dark:border-white/5 reveal">
-            <p class="text-gray-400 text-sm mb-4 font-medium tracking-tight">
-                &copy; 2026 Ma. Allysa Krisebel Rebato. Crafted with Passion.
-            </p>
+        <footer class="pt-8 border-t border-gray-100 dark:border-white/5 reveal">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+                <p class="text-gray-400 text-sm font-medium tracking-tight">
+                    &copy; 2026 Ma. Allysa Krisebel Rebato. Crafted with Passion.
+                </p>
+                <p class="text-gray-400 text-sm font-medium tracking-tight">
+                    Developed by <span class="text-blue-500">Tinynet Tech</span>
+                </p>
+            </div>
             <div class="flex justify-center gap-6">
                 <a href="https://www.facebook.com/xgtx.bond" class="text-gray-400 hover:text-blue-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/allysarebato" class="text-gray-400 hover:text-pink-500 transition-colors"><i class="fab fa-instagram"></i></a>
