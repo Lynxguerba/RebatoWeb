@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import MainLayout from './layouts/MainLayout';
 import PortalLoader from './components/PortalLoader';
 
@@ -16,28 +17,37 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4500);
+    }, 10000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
-      {loading && <PortalLoader onComplete={() => setLoading(false)} />}
-      
-      {/* Hide the main app until the loader is done */}
-      <div className={loading ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100 transition-opacity duration-500'}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<MainLayout />}>
-              <Route index element={<Home />} />
-              <Route path="about" element={<About />} />
-              <Route path="projects" element={<Projects />} />
-              <Route path="certificates" element={<Certificates />} />
-              <Route path="blueprint" element={<BlueprintDesign />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </div>
+      <AnimatePresence mode="wait">
+        {loading ? (
+          <PortalLoader key="loader" onComplete={() => setLoading(false)} />
+        ) : (
+          <motion.div
+            key="app-content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="w-full min-h-screen"
+          >
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<MainLayout />}>
+                  <Route index element={<Home />} />
+                  <Route path="about" element={<About />} />
+                  <Route path="projects" element={<Projects />} />
+                  <Route path="certificates" element={<Certificates />} />
+                  <Route path="blueprint" element={<BlueprintDesign />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
