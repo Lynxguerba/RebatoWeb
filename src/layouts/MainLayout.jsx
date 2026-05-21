@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import BottomNav from '../components/BottomNav';
 import ThemeToggle from '../components/ThemeToggle';
+import SpotlightGrid from '../components/SpotlightGrid';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
@@ -9,13 +10,16 @@ export default function MainLayout() {
 
   return (
     <div className="min-h-screen relative overflow-x-hidden">
+      {/* Background Layer with Interactive Spotlight */}
+      <SpotlightGrid />
+
       {/* Background Accents */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute -top-[10%] -right-[10%] w-[40%] h-[40%] bg-pink-500/10 blur-[120px] rounded-full mix-blend-screen"></div>
-        <div class="absolute -bottom-[10%] -left-[10%] w-[40%] h-[40%] bg-purple-500/10 blur-[120px] rounded-full mix-blend-screen"></div>
+        <div className="absolute -top-[10%] -right-[10%] w-[40%] h-[40%] bg-pink-500/5 blur-[120px] rounded-full mix-blend-screen"></div>
+        <div className="absolute -bottom-[10%] -left-[10%] w-[40%] h-[40%] bg-purple-500/5 blur-[120px] rounded-full mix-blend-screen"></div>
       </div>
 
-      <div className="absolute top-6 right-6 md:right-12 z-50">
+      <div className="fixed top-6 right-6 md:right-12 z-[100]">
         <ThemeToggle />
       </div>
 

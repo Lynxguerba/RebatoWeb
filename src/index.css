@@ -34,6 +34,12 @@
     font-family: var(--font-inter);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
+
+  @keyframes scan {
+    0% { top: 0; }
+    50% { top: 100%; }
+    100% { top: 0; }
+  }
 }
 
 /* Custom Scrollbar */
