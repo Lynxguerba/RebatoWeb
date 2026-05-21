@@ -1,12 +1,13 @@
-import { Outlet } from 'react-router-dom';
+import { useLocation, useOutlet } from 'react-router-dom';
+import React from 'react';
 import BottomNav from '../components/BottomNav';
 import ThemeToggle from '../components/ThemeToggle';
 import SpotlightGrid from '../components/SpotlightGrid';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
 
 export default function MainLayout() {
   const location = useLocation();
+  const currentOutlet = useOutlet();
 
   return (
     <div className="min-h-screen relative overflow-x-hidden">
@@ -34,7 +35,7 @@ export default function MainLayout() {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="w-full h-full"
           >
-            <Outlet />
+            {currentOutlet && React.cloneElement(currentOutlet, { key: location.pathname })}
           </motion.div>
         </AnimatePresence>
       </main>

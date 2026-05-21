@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-pink-primary: #ec4899;
   --color-pink-hover: #db2777;
