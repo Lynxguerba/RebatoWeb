@@ -84,13 +84,6 @@ const ProjectCard = ({ project, index }) => {
                 <ExternalLink size={16} /> View Live Demo
               </a>
             )}
-            {/* <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
-              className="flex items-center justify-center gap-2 px-5 py-3 bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-100 text-white dark:text-gray-900 font-bold rounded-xl transition-all duration-200 hover:scale-[1.03] shadow-lg text-sm w-full sm:w-auto border border-transparent dark:border-gray-200"
-            >
-              <Code2 size={16} /> Source Code
-            </a> */}
           </div>
         </div>
 
