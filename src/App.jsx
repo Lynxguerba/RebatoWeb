@@ -10,6 +10,8 @@ import Projects from './pages/Projects';
 import Certificates from './pages/Certificates';
 import BlueprintDesign from './pages/BlueprintDesign';
 import Contact from './pages/Contact';
+import AdminLogin from './pages/AdminLogin';
+import AdminMessages from './pages/AdminMessages';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -44,6 +46,8 @@ function App() {
                   <Route path="certificates" element={<Certificates />} />
                   <Route path="blueprint" element={<BlueprintDesign />} />
                   <Route path="contact" element={<Contact />} />
+                  <Route path="admin/login" element={<AdminLogin />} />
+                  <Route path="admin/messages" element={<AdminMessages />} />
                 </Route>
               </Routes>
             </BrowserRouter>
