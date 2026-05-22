@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, signOut } from 'firebase/auth';
 import { auth, googleProvider } from '../firebase';
+
+const ALLOWED_ADMIN_UIDS = import.meta.env.VITE_ALLOWED_ADMIN_UIDS?.split(',') || [];
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -13,8 +15,13 @@ export default function AdminLogin() {
     setLoading(true);
     setError('');
     try {
-      await signInWithPopup(auth, googleProvider);
-      navigate('/admin/messages');
+      const result = await signInWithPopup(auth, googleProvider);
+      if (!ALLOWED_ADMIN_UIDS.includes(result.user.uid)) {
+        await signOut(auth);
+        setError('Unauthorized user. You do not have admin access.');
+      } else {
+        navigate('/admin/messages');
+      }
     } catch (err) {
       console.error(err);
       setError('Failed to login. Ensure your Google account has access.');

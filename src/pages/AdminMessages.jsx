@@ -6,6 +6,8 @@ import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { Trash2, LogOut, MessageSquare, Clock, User } from 'lucide-react';
 import { db, auth } from '../firebase';
 
+const ALLOWED_ADMIN_UIDS = import.meta.env.VITE_ALLOWED_ADMIN_UIDS?.split(',') || [];
+
 export default function AdminMessages() {
   const navigate = useNavigate();
   const [messages, setMessages] = useState([]);
@@ -13,11 +15,16 @@ export default function AdminMessages() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribeAuth = onAuthStateChanged(auth, async (currentUser) => {
       if (!currentUser) {
         navigate('/admin/login');
       } else {
-        setUser(currentUser);
+        if (!ALLOWED_ADMIN_UIDS.includes(currentUser.uid)) {
+          await signOut(auth);
+          navigate('/admin/login');
+        } else {
+          setUser(currentUser);
+        }
       }
     });
     return () => unsubscribeAuth();
