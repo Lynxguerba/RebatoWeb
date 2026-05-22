@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Home, User, Briefcase, Award } from 'lucide-react';
+import { Home, User, Briefcase, Award, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 
@@ -9,6 +9,7 @@ export default function BottomNav() {
     { name: 'About', path: '/about', icon: User },
     { name: 'Projects', path: '/projects', icon: Briefcase },
     { name: 'Certificates', path: '/certificates', icon: Award },
+    { name: 'Contact', path: '/contact', icon: Mail },
   ];
 
   return (

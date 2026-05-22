@@ -9,6 +9,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Certificates from './pages/Certificates';
 import BlueprintDesign from './pages/BlueprintDesign';
+import Contact from './pages/Contact';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -42,6 +43,7 @@ function App() {
                   <Route path="projects" element={<Projects />} />
                   <Route path="certificates" element={<Certificates />} />
                   <Route path="blueprint" element={<BlueprintDesign />} />
+                  <Route path="contact" element={<Contact />} />
                 </Route>
               </Routes>
             </BrowserRouter>
