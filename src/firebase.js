@@ -12,9 +12,23 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
-const db = getFirestore(app);
+// Initialize Firebase only if API key is present to avoid immediate crashes in production if env vars are missing
+let app;
+let auth;
+let googleProvider;
+let db;
+
+try {
+  if (firebaseConfig.apiKey) {
+    app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+    googleProvider = new GoogleAuthProvider();
+    db = getFirestore(app);
+  } else {
+    console.warn("Firebase environment variables are missing. Some features may not work.");
+  }
+} catch (error) {
+  console.error("Firebase initialization failed:", error);
+}
 
 export { auth, googleProvider, db };
