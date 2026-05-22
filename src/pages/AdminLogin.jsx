@@ -16,15 +16,19 @@ export default function AdminLogin() {
     setError('');
     try {
       const result = await signInWithPopup(auth, googleProvider);
+      console.log("Logged in user UID:", result.user.uid);
+      console.log("Allowed UIDs:", ALLOWED_ADMIN_UIDS);
+      
       if (!ALLOWED_ADMIN_UIDS.includes(result.user.uid)) {
+        console.error("Access denied for UID:", result.user.uid);
         await signOut(auth);
         setError('Unauthorized user. You do not have admin access.');
       } else {
         navigate('/admin/messages');
       }
     } catch (err) {
-      console.error(err);
-      setError('Failed to login. Ensure your Google account has access.');
+      console.error("Login error details:", err);
+      setError(`Failed to login: ${err.message || 'Check browser console'}`);
     } finally {
       setLoading(false);
     }
