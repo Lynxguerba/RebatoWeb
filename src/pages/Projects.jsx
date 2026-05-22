@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Check, Code2 } from 'lucide-react';
+import { ExternalLink, Check } from 'lucide-react';
 
 const projects = [
   {
