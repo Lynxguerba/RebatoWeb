@@ -5,6 +5,7 @@ import { collection, query, orderBy, onSnapshot, deleteDoc, doc } from 'firebase
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { Trash2, LogOut, MessageSquare, Clock, User } from 'lucide-react';
 import { db, auth } from '../firebase';
+import ConfirmDialog from '../components/ConfirmDialog';
 
 const ALLOWED_ADMIN_UIDS = import.meta.env.VITE_ALLOWED_ADMIN_UIDS?.split(',') || [];
 
@@ -13,6 +14,7 @@ export default function AdminMessages() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [confirmDelete, setConfirmDelete] = useState(null);
 
   useEffect(() => {
     const unsubscribeAuth = onAuthStateChanged(auth, async (currentUser) => {
@@ -48,14 +50,17 @@ export default function AdminMessages() {
     return () => unsubscribe();
   }, [user]);
 
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this message?')) {
-      try {
-        await deleteDoc(doc(db, 'messages', id));
-      } catch (error) {
-        console.error('Error deleting document:', error);
-        alert('Failed to delete message.');
-      }
+  const handleDelete = (id) => {
+    setConfirmDelete(id);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!confirmDelete) return;
+    try {
+      await deleteDoc(doc(db, 'messages', confirmDelete));
+      setConfirmDelete(null);
+    } catch (error) {
+      console.error('Error deleting document:', error);
     }
   };
 
@@ -154,7 +159,7 @@ export default function AdminMessages() {
                   
                   <button
                     onClick={() => handleDelete(msg.id)}
-                    className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-full transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+                    className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-full transition-colors"
                     title="Delete message"
                   >
                     <Trash2 size={18} />
@@ -171,6 +176,17 @@ export default function AdminMessages() {
           </AnimatePresence>
         </div>
       )}
+
+      <ConfirmDialog
+        isOpen={!!confirmDelete}
+        onClose={() => setConfirmDelete(null)}
+        onConfirm={handleConfirmDelete}
+        title="Delete Message"
+        message="Are you sure you want to delete this message? This action cannot be undone."
+        confirmText="Delete"
+        cancelText="Cancel"
+        type="danger"
+      />
     </div>
   );
 }
