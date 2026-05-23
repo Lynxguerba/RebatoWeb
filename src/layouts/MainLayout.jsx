@@ -1,9 +1,18 @@
+import { useLayoutEffect } from 'react';
 import { useLocation, useOutlet } from 'react-router-dom';
 import React from 'react';
 import BottomNav from '../components/BottomNav';
 import ThemeToggle from '../components/ThemeToggle';
 import SpotlightGrid from '../components/SpotlightGrid';
 import { motion, AnimatePresence } from 'framer-motion';
+
+function ScrollOnMount() {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return null;
+}
 
 export default function MainLayout() {
   const location = useLocation();
@@ -29,12 +38,13 @@ export default function MainLayout() {
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="w-full h-full"
           >
+            <ScrollOnMount />
             {currentOutlet && React.cloneElement(currentOutlet, { key: location.pathname })}
           </motion.div>
         </AnimatePresence>

@@ -49,11 +49,11 @@ const ProjectCard = ({ project, index }) => {
       </div>
 
       {/* Project Screenshot */}
-      <div className="w-full h-[220px] md:h-[300px] relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/[0.06] mb-8 flex-shrink-0">
+      <div className="w-full relative overflow-hidden rounded-2xl border border-gray-100 dark:border-white/[0.06] mb-8 flex-shrink-0">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+          className="w-full h-auto object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
